@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Joy Ride Extension Popup",
+  "description": "This extension is a working progress of Joy Ride Chrome extension",
+  "version": "1.2",
+  "browser_action": {
+    "default_title": "Joy Ride Extension",
+    "default_logo": "logo.png"
+  },
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "128": "logo.png"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-RLYW0j7Q9oda8BeRYevpFossah5qAHdgOXVqz0hXqS4='; object-src 'self'",
+  "permissions": ["tabs", "history", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
+}
