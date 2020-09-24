@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Select from "react-select";
 import Popup from "./Popup";
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
+import classnames from "classnames";
 
 const serviceOption = [
   { label: "1부 찬양/미디어 (7:45AM)", value: "1" },
@@ -42,13 +47,32 @@ class Register extends Component {
       showPopup: false,
     };
   }
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
+  }
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup,
     });
   }
-  handleChange = (e) => {
-    this.setState({ [e.id]: e.value });
+  handleSerivce = (e) => {
+    this.setState({ serviceTime: e.value });
+  };
+  handleDriver = (e) => {
+    this.setState({ driver: e.value });
+  };
+  handleLocation = (e) => {
+    this.setState({ location: e.value });
   };
   onChange = (e) => {
     this.setState({
@@ -66,7 +90,7 @@ class Register extends Component {
       driver: this.state.driver,
       location: this.state.location,
     };
-    console.log(newUser);
+    this.props.registerUser(newUser, this.props.history);
   };
   render() {
     const { errors } = this.state;
@@ -94,8 +118,12 @@ class Register extends Component {
                   error={errors.name}
                   id="name"
                   type="text"
+                  className={classnames("", {
+                    invalid: errors.name,
+                  })}
                 />
                 <label htmlFor="name">Name</label>
+                <span className="red-text">{errors.name}</span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -104,8 +132,12 @@ class Register extends Component {
                   error={errors.email}
                   id="email"
                   type="email"
+                  className={classnames("", {
+                    invalid: errors.email,
+                  })}
                 />
                 <label htmlFor="email">Email</label>
+                <span className="red-text">{errors.email}</span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -114,8 +146,12 @@ class Register extends Component {
                   error={errors.password}
                   id="password"
                   type="password"
+                  className={classnames("", {
+                    invalid: errors.password,
+                  })}
                 />
                 <label htmlFor="password">Password</label>
+                <span className="red-text">{errors.password}</span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -124,13 +160,17 @@ class Register extends Component {
                   error={errors.password2}
                   id="password2"
                   type="password"
+                  className={classnames("", {
+                    invalid: errors.password2,
+                  })}
                 />
                 <label htmlFor="password2">Confirm Password</label>
+                <span className="red-text">{errors.password2}</span>
               </div>
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleSerivce}
                   id="serviceTime"
                   options={serviceOption}
                   value={serviceOption.find(
@@ -140,12 +180,16 @@ class Register extends Component {
                   placeholder="Service Time"
                   searchable={false}
                   menuPlacement="auto"
+                  className={classnames("", {
+                    invalid: errors.serviceTime,
+                  })}
                 />
+                <span className="red-text">{errors.serviceTime}</span>
               </div>
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleDriver}
                   id="driver"
                   options={driverOption}
                   value={driverOption.find(
@@ -155,12 +199,16 @@ class Register extends Component {
                   placeholder="Driver?"
                   searchable={false}
                   menuPlacement="auto"
+                  className={classnames("", {
+                    invalid: errors.driver,
+                  })}
                 />
+                <span className="red-text">{errors.driver}</span>
               </div>
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleLocation}
                   id="location"
                   options={locationOption}
                   value={locationOption.find(
@@ -170,7 +218,11 @@ class Register extends Component {
                   placeholder="Location"
                   searchable={false}
                   menuPlacement="top"
+                  className={classnames("", {
+                    invalid: errors.location,
+                  })}
                 />
+                <span className="red-text">{errors.location}</span>
                 <div>
                   <p className="grey-text text-darken-1">
                     Click{" "}
@@ -203,4 +255,16 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
