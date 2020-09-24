@@ -65,8 +65,14 @@ class Register extends Component {
       showPopup: !this.state.showPopup,
     });
   }
-  handleChange = (e) => {
-    this.setState({ [e.id]: e.value });
+  handleSerivce = (e) => {
+    this.setState({ serviceTime: e.value });
+  };
+  handleDriver = (e) => {
+    this.setState({ driver: e.value });
+  };
+  handleLocation = (e) => {
+    this.setState({ location: e.value });
   };
   onChange = (e) => {
     this.setState({
@@ -164,7 +170,7 @@ class Register extends Component {
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleSerivce}
                   id="serviceTime"
                   options={serviceOption}
                   value={serviceOption.find(
@@ -183,7 +189,7 @@ class Register extends Component {
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleDriver}
                   id="driver"
                   options={driverOption}
                   value={driverOption.find(
@@ -202,7 +208,7 @@ class Register extends Component {
               <div className="input-field col s12">
                 <Select
                   required={true}
-                  onChange={this.handleChange}
+                  onChange={this.handleLocation}
                   id="location"
                   options={locationOption}
                   value={locationOption.find(
