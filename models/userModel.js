@@ -31,6 +31,10 @@ const userSchema = new Schema({
     type: Number,
     required: true,
   },
+  didSurvey: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 module.exports = user = mongoose.model("users", userSchema);

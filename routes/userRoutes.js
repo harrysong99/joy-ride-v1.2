@@ -101,6 +101,7 @@ router.post("/register", (req, res) => {
         serviceTime: req.body.serviceTime,
         driver: req.body.driver,
         location: req.body.location,
+        didSurvey: req.body.didSurvey,
       });
       // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {

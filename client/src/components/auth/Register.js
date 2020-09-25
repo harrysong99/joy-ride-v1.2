@@ -43,6 +43,7 @@ class Register extends Component {
       serviceTime: "",
       driver: "",
       location: "",
+      didSurvey: "false",
       errors: {},
       showPopup: false,
     };
@@ -89,6 +90,7 @@ class Register extends Component {
       serviceTime: this.state.serviceTime,
       driver: this.state.driver,
       location: this.state.location,
+      didSurvey: this.state.didSurvey,
     };
     this.props.registerUser(newUser, this.props.history);
   };
