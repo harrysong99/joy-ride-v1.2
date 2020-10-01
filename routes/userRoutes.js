@@ -33,6 +33,16 @@ router.get("/", async (req, res) => {
   return res.json(createRes);
 });
 
+// @route Get api/users/didSurvey/:email
+// @desc Get user data
+// @access Public
+router.get("/didSurvey/:email", async (req, res) => {
+  const email = req.params.email;
+  console.log("request params: " + email);
+  const createRes = await userController.getDidSurvey(email);
+  return res.json(createRes);
+});
+
 // @route Put api/users/:email/:location
 // @desc update user data
 // @access Public
@@ -66,6 +76,25 @@ router.put("/serviceTime/:email/:serviceTime", async (req, res) => {
     email,
     serviceTime
   );
+  return res.json(createRes);
+});
+
+// @route Put api/users/didSurvey/:email/:didSurvey
+// @desc update user data
+// @access Public
+router.put("/didSurvey/:email/:didSurvey", async (req, res) => {
+  const email = req.params.email;
+  const didSurvey = req.params.didSurvey;
+  console.log("request params: " + email + ", " + didSurvey);
+  const createRes = await userController.updateDidSurvey(email, didSurvey);
+  return res.json(createRes);
+});
+
+// @route Put api/users/everyDidSurvey
+// @desc update user data
+// @access Public
+router.put("/everyDidSurvey", async (req, res) => {
+  const createRes = await userController.updateEveryDidSurvey();
   return res.json(createRes);
 });
 

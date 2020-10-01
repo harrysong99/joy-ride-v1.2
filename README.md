@@ -222,3 +222,45 @@ Response Example
     "success": true,
 }
 ```
+
+| API             | getDidSurvey                                |
+| --------------- | ------------------------------------------- |
+| Url             | `/api/users/didSurvey/:email`               |
+| Method          | Get                                         |
+| Params          | email                                       |
+| Request Example | curl IP/api/users/didSurvey/example@foo.com |
+
+Response Example
+
+```
+{
+    "success": true,
+    "didSurvey": false
+}
+```
+
+| API             | updateDidSurvey                             |
+| --------------- | ------------------------------------------- |
+| Url             | `/api/users/didSurvey/:email`               |
+| Method          | Put                                         |
+| Params          | email                                       |
+| Request Example | curl IP/api/users/didSurvey/example@foo.com |
+
+Response Example
+
+```
+{
+    "success": true,
+    "userData": {
+        "_id": "someuuid",
+        "name": "John Doe",
+        "email": "example@foo.edu",
+        "password": "hashedpassword",
+        "serviceTime": 2,
+        "driver": false,
+        "location": 4,
+        "didSurvey": true,
+        "__v": 0
+    }
+}
+```
