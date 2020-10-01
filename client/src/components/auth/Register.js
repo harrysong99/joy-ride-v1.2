@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import Select from "react-select";
-import Popup from "./Popup";
+// import Popup from "./Popup";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -225,7 +225,7 @@ class Register extends Component {
                   })}
                 />
                 <span className="red-text">{errors.location}</span>
-                <div>
+                {/* <div>
                   <p className="grey-text text-darken-1">
                     Click{" "}
                     <Link onClick={this.togglePopup.bind(this)}>here</Link> find
@@ -234,7 +234,7 @@ class Register extends Component {
                   {this.state.showPopup ? (
                     <Popup closePopup={this.togglePopup.bind(this)} />
                   ) : null}
-                </div>
+                </div> */}
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button

@@ -25,6 +25,18 @@ module.exports = {
     return createRes;
   },
 
+  getDidSurvey: async (userEmail) => {
+    const createRes = await User.findOne({ email: userEmail }).then((user) => {
+      if (!user) {
+        return { success: false, errmsg: "email not found in users" };
+      } else {
+        console.log("success!");
+        return { success: true, didSurvey: user.didSurvey };
+      }
+    });
+    return createRes;
+  },
+
   updateUserLocation: async (userEmail, userLocation) => {
     // find user and update location
     const user = await User.findOneAndUpdate(
@@ -75,6 +87,35 @@ module.exports = {
       return { success: true };
     } else {
       return { success: false, errmsg: "delete not successful!" };
+    }
+  },
+
+  updateDidSurvey: async (userEmail, userSurvey) => {
+    const user = await User.findOneAndUpdate(
+      { email: userEmail },
+      { didSurvey: userSurvey },
+      { useFindAndModify: false, returnOriginal: false }
+    );
+    // if successful, create response
+    if (user) {
+      return { success: true, userData: user };
+    } else {
+      return { success: false, errmsg: "update not valid!" };
+    }
+  },
+
+  updateEveryDidSurvey: async () => {
+    const user = await User.update(
+      {},
+      { $set: { didSurvey: false } },
+      {
+        multi: true,
+      }
+    );
+    if (user) {
+      return { success: true };
+    } else {
+      return { success: false, errmsg: "update failed!" };
     }
   },
 };
