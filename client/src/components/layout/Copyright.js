@@ -11,7 +11,7 @@ class Copyright extends Component {
         style={{ paddingTop: "30px", paddingBottom: "70px" }}
       >
         {"Copyright © "}
-        <Link color="inherit" to="/">
+        <Link color="inherit" to="/dashboard">
           Joy Ride
         </Link>{" "}
         {new Date().getFullYear()}

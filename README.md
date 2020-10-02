@@ -264,3 +264,19 @@ Response Example
     }
 }
 ```
+
+| API             | updateEveryDidSurvey             |
+| --------------- | -------------------------------- |
+| Url             | `/api/users/everyDidSurvey`      |
+| Method          | Put                              |
+| Params          |                                  |
+| Request Example | curl IP/api/users/everyDidSurvey |
+
+Response Example
+
+```
+{
+    "success": true,
+    "msg": "Thank you for completing the survey!"
+}
+```
