@@ -43,7 +43,7 @@ router.get("/didSurvey/:email", async (req, res) => {
   return res.json(createRes);
 });
 
-// @route Put api/users/:email/:location
+// @route Put api/users/location/:email/:location
 // @desc update user data
 // @access Public
 router.put("/location/:email/:location", async (req, res) => {
@@ -54,7 +54,7 @@ router.put("/location/:email/:location", async (req, res) => {
   return res.json(createRes);
 });
 
-// @route Put api/users/:email/:driver
+// @route Put api/users/driver/:email/:driver
 // @desc update user data
 // @access Public
 router.put("/driver/:email/:driver", async (req, res) => {
@@ -65,7 +65,7 @@ router.put("/driver/:email/:driver", async (req, res) => {
   return res.json(createRes);
 });
 
-// @route Put api/users/:email/:serviceTime
+// @route Put api/users/serviceTime/:email/:serviceTime
 // @desc update user data
 // @access Public
 router.put("/serviceTime/:email/:serviceTime", async (req, res) => {
