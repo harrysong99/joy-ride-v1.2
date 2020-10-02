@@ -113,7 +113,10 @@ module.exports = {
       }
     );
     if (user) {
-      return { success: true };
+      return {
+        success: true,
+        msg: "Thank you for completing this week's survey!",
+      };
     } else {
       return { success: false, errmsg: "update failed!" };
     }
