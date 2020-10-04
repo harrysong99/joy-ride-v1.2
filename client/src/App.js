@@ -11,6 +11,7 @@ import Login from "./components/auth/Login";
 import Copyright from "./components/layout/Copyright";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import Survey from "./components/dashboard/Survey";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -46,6 +47,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard/survey" component={Survey} />
             </Switch>
             <Copyright />
           </div>
