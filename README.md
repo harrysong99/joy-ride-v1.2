@@ -72,7 +72,7 @@ Response Example
 
 ```
 {
-    "_id": "some uuid",
+    "_id": "some-uuid",
     "name": "John Doe"
     "email": "example@berkeley.edu"
     "password": "password"
@@ -83,12 +83,37 @@ Response Example
 }
 ```
 
-| API             | getUserByEmail                    |
-| --------------- | --------------------------------- |
-| Url             | `/api/users/:email`               |
-| Method          | Get                               |
-| Params          | email                             |
-| Request Example | curl IP/api/users/example@foo.com |
+| API             | getUserById                    |
+| --------------- | ------------------------------ |
+| Url             | `/api/users/id/:id`            |
+| Method          | Get                            |
+| Params          | id                             |
+| Request Example | curl IP/api/users/id/some-uuid |
+
+Response Example
+
+```
+{
+    "success": true,
+    "userData": {
+        "_id": "some-uuid",
+        "name": "John Doe"
+        "email": "example@foo.com"
+        "password": "password"
+        "serviceTime": 1
+        "driver": true
+        "location": 5
+        "__v": 0
+    }
+}
+```
+
+| API             | getUserByEmail                          |
+| --------------- | --------------------------------------- |
+| Url             | `/api/users/email/:email`               |
+| Method          | Get                                     |
+| Params          | email                                   |
+| Request Example | curl IP/api/users/email/example@foo.com |
 
 Response Example
 
@@ -121,7 +146,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "some uuid",
+        "_id": "some-uuid",
         "name": "John Doe"
         "email": "example@foo.com"
         "password": "password"
@@ -146,7 +171,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "some uuid",
+        "_id": "some-uuid",
         "name": "John Doe"
         "email": "example@foo.com"
         "password": "password"
@@ -171,7 +196,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "some uuid",
+        "_id": "some-uuid",
         "name": "John Doe"
         "email": "example@foo.com"
         "password": "password"
@@ -196,7 +221,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "some uuid",
+        "_id": "some-uuid",
         "name": "John Doe"
         "email": "example@foo.com"
         "password": "password"
@@ -252,7 +277,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "someuuid",
+        "_id": "some-uuid",
         "name": "John Doe",
         "email": "example@foo.edu",
         "password": "hashedpassword",
