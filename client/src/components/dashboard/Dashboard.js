@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
 class Dashboard extends Component {
   onLogoutClick = (e) => {
     e.preventDefault();
@@ -16,10 +17,36 @@ class Dashboard extends Component {
             <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                please complete your survey on time! <span />
+                👏
               </p>
             </h4>
+            <div className="col s6">
+              <Link
+                to="/dashboard/survey"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                }}
+                className="btn btn-large btn-flat waves-effect white black-text"
+              >
+                Survey
+              </Link>
+            </div>
+            <div className="col s6">
+              <button
+                to="/"
+                style={{
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                }}
+                className="btn btn-large btn-flat waves-effect hoverable white black-text"
+              >
+                Info
+              </button>
+            </div>
             <button
               style={{
                 width: "150px",

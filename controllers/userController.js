@@ -1,6 +1,18 @@
 const User = require("../models/userModel");
 
 module.exports = {
+  getUserById: async (userId) => {
+    const createRes = await User.findOne({ _id: userId }).then((user) => {
+      if (!user) {
+        return { success: false, errmsg: "id not found in users" };
+      } else {
+        console.log("user found!");
+        return { success: true, userData: user };
+      }
+    });
+    return createRes;
+  },
+
   getUserByEmail: async (userEmail) => {
     const createRes = await User.findOne({ email: userEmail }).then((user) => {
       if (!user) {
@@ -98,7 +110,11 @@ module.exports = {
     );
     // if successful, create response
     if (user) {
-      return { success: true, userData: user };
+      return {
+        success: true,
+        userData: user,
+        msg: "Thank you for completing this week's survey!",
+      };
     } else {
       return { success: false, errmsg: "update not valid!" };
     }
@@ -115,7 +131,6 @@ module.exports = {
     if (user) {
       return {
         success: true,
-        msg: "Thank you for completing this week's survey!",
       };
     } else {
       return { success: false, errmsg: "update failed!" };

@@ -12,10 +12,10 @@ const userController = require("../controllers/userController");
 // load user model
 const User = require("../models/userModel");
 
-// @route Get api/users/:email
+// @route Get api/users/email/:email
 // @desc Get user data
 // @access Public
-router.get("/:email", async (req, res) => {
+router.get("/email/:email", async (req, res) => {
   const email = req.params.email;
   console.log("request params: " + email);
   const createRes = await userController.getUserByEmail(email);
@@ -30,6 +30,17 @@ router.get("/", async (req, res) => {
   const name = req.query.name;
   console.log("request query: " + name);
   const createRes = await userController.getUserByName(name);
+  return res.json(createRes);
+});
+
+// @route Get api/users/id/:id
+// @query id
+// @desc Get user data
+// @access Public
+router.get("/id/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("request params: " + id);
+  const createRes = await userController.getUserById(id);
   return res.json(createRes);
 });
 
