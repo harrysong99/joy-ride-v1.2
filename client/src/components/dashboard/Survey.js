@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-// import classnames from "classnames";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { updateDidSurvey } from "../../actions/userActions";
+
 const didSurveyOption = [
   { label: "Yes", value: "true" },
   { label: "No", value: "false" },
@@ -10,7 +13,7 @@ class Survey extends Component {
   constructor() {
     super();
     this.state = {
-      didSurvey: "",
+      didSurvey: "false",
     };
   }
   onChange = (e) => {
@@ -20,8 +23,12 @@ class Survey extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
+    const userDidSurvey = this.state.didSurvey;
+    const { user } = this.props.auth;
+    updateDidSurvey(user.id, userDidSurvey, this.props.history);
   };
   render() {
+    console.log(this.props.auth);
     return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
@@ -82,5 +89,11 @@ class Survey extends Component {
     );
   }
 }
-
-export default Survey;
+Survey.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps)(Survey);

@@ -44,60 +44,60 @@ router.get("/id/:id", async (req, res) => {
   return res.json(createRes);
 });
 
-// @route Get api/users/didSurvey/:email
+// @route Get api/users/didSurvey/:id
 // @desc Get user data
 // @access Public
-router.get("/didSurvey/:email", async (req, res) => {
-  const email = req.params.email;
-  console.log("request params: " + email);
-  const createRes = await userController.getDidSurvey(email);
+router.get("/didSurvey/:id", async (req, res) => {
+  const userID = req.params.id;
+  console.log("request params: " + userID);
+  const createRes = await userController.getDidSurvey(userID);
   return res.json(createRes);
 });
 
-// @route Put api/users/location/:email/:location
+// @route Put api/users/location/:id/:location
 // @desc update user data
 // @access Public
-router.put("/location/:email/:location", async (req, res) => {
-  const email = req.params.email;
+router.put("/location/:id/:location", async (req, res) => {
+  const userID = req.params.id;
   const location = req.params.location;
-  console.log("request params: " + email + ", " + location);
-  const createRes = await userController.updateUserLocation(email, location);
+  console.log("request params: " + userID + ", " + location);
+  const createRes = await userController.updateUserLocation(userID, location);
   return res.json(createRes);
 });
 
-// @route Put api/users/driver/:email/:driver
+// @route Put api/users/driver/:id/:driver
 // @desc update user data
 // @access Public
-router.put("/driver/:email/:driver", async (req, res) => {
-  const email = req.params.email;
+router.put("/driver/:id/:driver", async (req, res) => {
+  const userID = req.params.id;
   const driver = req.params.driver;
-  console.log("request params: " + email + ", " + driver);
-  const createRes = await userController.updateUserDriver(email, driver);
+  console.log("request params: " + userID + ", " + driver);
+  const createRes = await userController.updateUserDriver(userID, driver);
   return res.json(createRes);
 });
 
-// @route Put api/users/serviceTime/:email/:serviceTime
+// @route Put api/users/serviceTime/:id/:serviceTime
 // @desc update user data
 // @access Public
-router.put("/serviceTime/:email/:serviceTime", async (req, res) => {
-  const email = req.params.email;
+router.put("/serviceTime/:id/:serviceTime", async (req, res) => {
+  const userID = req.params.id;
   const serviceTime = req.params.serviceTime;
-  console.log("request params: " + email + ", " + serviceTime);
+  console.log("request params: " + userID + ", " + serviceTime);
   const createRes = await userController.updateUserServiceTime(
-    email,
+    userID,
     serviceTime
   );
   return res.json(createRes);
 });
 
-// @route Put api/users/didSurvey/:email/:didSurvey
+// @route Put api/users/didSurvey/:id/:didSurvey
 // @desc update user data
 // @access Public
-router.put("/didSurvey/:email/:didSurvey", async (req, res) => {
-  const email = req.params.email;
+router.put("/didSurvey/:id/:didSurvey", async (req, res) => {
+  const userID = req.params.id;
   const didSurvey = req.params.didSurvey;
-  console.log("request params: " + email + ", " + didSurvey);
-  const createRes = await userController.updateDidSurvey(email, didSurvey);
+  console.log("request params: " + userID + ", " + didSurvey);
+  const createRes = await userController.updateDidSurvey(userID, didSurvey);
   return res.json(createRes);
 });
 
@@ -109,13 +109,13 @@ router.put("/everyDidSurvey", async (req, res) => {
   return res.json(createRes);
 });
 
-// @route Delete api/users/:email
+// @route Delete api/users/:id
 // @desc update user data
 // @access Public
-router.delete("/:email", async (req, res) => {
-  const email = req.params.email;
-  console.log("request params: " + email);
-  const createRes = await userController.deleteUser(email);
+router.delete("/:id", async (req, res) => {
+  const userID = req.params.id;
+  console.log("request params: " + userID);
+  const createRes = await userController.deleteUser(userID);
   return res.json(createRes);
 });
 
