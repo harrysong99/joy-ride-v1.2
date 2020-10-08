@@ -121,7 +121,7 @@ Response Example
 {
     "success": true,
     "userData": {
-        "_id": "some uuid",
+        "_id": "some-uuid",
         "name": "John Doe"
         "email": "example@foo.com"
         "password": "password"
@@ -158,12 +158,12 @@ Response Example
 }
 ```
 
-| API             | updateUserLocation                           |
-| --------------- | -------------------------------------------- |
-| Url             | `/api/users/location/:email/:location`       |
-| Method          | Put                                          |
-| Params          | email, location                              |
-| Request Example | curl IP/api/users/location/example@foo.com/4 |
+| API             | updateUserLocation                     |
+| --------------- | -------------------------------------- |
+| Url             | `/api/users/location/:id/:location`    |
+| Method          | Put                                    |
+| Params          | id, location                           |
+| Request Example | curl IP/api/users/location/some-uuid/4 |
 
 Response Example
 
@@ -183,12 +183,12 @@ Response Example
 }
 ```
 
-| API             | updateUserDriver                                 |
-| --------------- | ------------------------------------------------ |
-| Url             | `/api/users/driver/:email/:driver`               |
-| Method          | Put                                              |
-| Params          | email, driver                                    |
-| Request Example | curl IP/api/users/location/example@foo.com/false |
+| API             | updateUserDriver                           |
+| --------------- | ------------------------------------------ |
+| Url             | `/api/users/driver/:id/:driver`            |
+| Method          | Put                                        |
+| Params          | id, driver                                 |
+| Request Example | curl IP/api/users/location/some-uuid/false |
 
 Response Example
 
@@ -208,12 +208,12 @@ Response Example
 }
 ```
 
-| API             | updateUserServiceTime                        |
-| --------------- | -------------------------------------------- |
-| Url             | `/api/users/location/:email/:serviceTime`    |
-| Method          | Put                                          |
-| Params          | email, serviceTime                           |
-| Request Example | curl IP/api/users/location/example@foo.com/2 |
+| API             | updateUserServiceTime                  |
+| --------------- | -------------------------------------- |
+| Url             | `/api/users/location/:id/:serviceTime` |
+| Method          | Put                                    |
+| Params          | id, serviceTime                        |
+| Request Example | curl IP/api/users/location/some-uuid/2 |
 
 Response Example
 
@@ -233,12 +233,12 @@ Response Example
 }
 ```
 
-| API             | deleteUser                        |
-| --------------- | --------------------------------- |
-| Url             | `/api/users/:email`               |
-| Method          | Delete                            |
-| Params          | email                             |
-| Request Example | curl IP/api/users/example@foo.com |
+| API             | deleteUser                  |
+| --------------- | --------------------------- |
+| Url             | `/api/users/:id`            |
+| Method          | Delete                      |
+| Params          | id                          |
+| Request Example | curl IP/api/users/some-uuid |
 
 Response Example
 
@@ -248,12 +248,12 @@ Response Example
 }
 ```
 
-| API             | getDidSurvey                                |
-| --------------- | ------------------------------------------- |
-| Url             | `/api/users/didSurvey/:email`               |
-| Method          | Get                                         |
-| Params          | email                                       |
-| Request Example | curl IP/api/users/didSurvey/example@foo.com |
+| API             | getDidSurvey                          |
+| --------------- | ------------------------------------- |
+| Url             | `/api/users/didSurvey/:id`            |
+| Method          | Get                                   |
+| Params          | id                                    |
+| Request Example | curl IP/api/users/didSurvey/some-uuid |
 
 Response Example
 
@@ -264,12 +264,12 @@ Response Example
 }
 ```
 
-| API             | updateDidSurvey                             |
-| --------------- | ------------------------------------------- |
-| Url             | `/api/users/didSurvey/:email`               |
-| Method          | Put                                         |
-| Params          | email                                       |
-| Request Example | curl IP/api/users/didSurvey/example@foo.com |
+| API             | updateDidSurvey                       |
+| --------------- | ------------------------------------- |
+| Url             | `/api/users/didSurvey/:id`            |
+| Method          | Put                                   |
+| Params          | id                                    |
+| Request Example | curl IP/api/users/didSurvey/some-uuid |
 
 Response Example
 
