@@ -208,12 +208,12 @@ Response Example
 }
 ```
 
-| API             | updateUserServiceTime                  |
-| --------------- | -------------------------------------- |
-| Url             | `/api/users/location/:id/:serviceTime` |
-| Method          | Put                                    |
-| Params          | id, serviceTime                        |
-| Request Example | curl IP/api/users/location/some-uuid/2 |
+| API             | updateUserServiceTime                     |
+| --------------- | ----------------------------------------- |
+| Url             | `/api/users/serviceTime/:id/:serviceTime` |
+| Method          | Put                                       |
+| Params          | id, serviceTime                           |
+| Request Example | curl IP/api/users/location/some-uuid/2    |
 
 Response Example
 
