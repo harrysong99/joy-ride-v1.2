@@ -44,7 +44,7 @@ class Dashboard extends Component {
                 }}
                 className="btn btn-large btn-flat waves-effect hoverable white black-text"
               >
-                Info
+                Profile
               </button>
             </div>
             <button
