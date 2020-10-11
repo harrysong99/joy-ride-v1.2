@@ -4,6 +4,7 @@ import Select from "react-select";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { updateDidSurvey } from "../../actions/userActions";
+import classnames from "classnames";
 
 const didSurveyOption = [
   { label: "Yes", value: "true" },
@@ -13,8 +14,16 @@ class Survey extends Component {
   constructor() {
     super();
     this.state = {
-      didSurvey: "false",
+      didSurvey: "",
+      errors: {},
     };
+  }
+  validateInput() {
+    if (this.state.didSurvey === "") {
+      this.setState({
+        errors: { didSurvey: "This field is required!" },
+      });
+    }
   }
   onChange = (e) => {
     this.setState({
@@ -23,12 +32,13 @@ class Survey extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
+    this.validateInput();
     const userDidSurvey = this.state.didSurvey;
     const { user } = this.props.auth;
     updateDidSurvey(user.id, userDidSurvey, this.props.history);
   };
   render() {
-    console.log(this.props.auth);
+    const { errors } = this.state;
     return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
@@ -55,6 +65,7 @@ class Survey extends Component {
                   required={true}
                   onChange={this.onChange}
                   id="didSurvey"
+                  error={errors.didSurvey}
                   options={didSurveyOption}
                   value={didSurveyOption.find(
                     (obj) => obj.value === this.state.didSurvey
@@ -62,7 +73,11 @@ class Survey extends Component {
                   placeholder="Are you going?"
                   searchable={false}
                   menuPlacement="top"
+                  className={classnames("", {
+                    invalid: errors.didSurvey,
+                  })}
                 />
+                <span className="red-text">{errors.didSurvey}</span>
               </div>
               <div className="input-field col s12">
                 <input id="name" type="text" />
