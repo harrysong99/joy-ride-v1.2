@@ -15,6 +15,7 @@ class Survey extends Component {
     super();
     this.state = {
       didSurvey: "",
+      date: new Date().getDay(),
       errors: {},
     };
   }
@@ -33,9 +34,15 @@ class Survey extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.validateInput();
-    const userDidSurvey = this.state.didSurvey;
-    const { user } = this.props.auth;
-    updateDidSurvey(user.id, userDidSurvey, this.props.history);
+    if (this.state.date > 5) {
+      this.setState({
+        errors: { didSurvey: "Too late! please ask the admin for a rearrangement"}
+      })
+    } else {
+      const userDidSurvey = this.state.didSurvey;
+      const { user } = this.props.auth;
+      updateDidSurvey(user.id, userDidSurvey, this.props.history);
+    }
   };
   render() {
     const { errors } = this.state;
