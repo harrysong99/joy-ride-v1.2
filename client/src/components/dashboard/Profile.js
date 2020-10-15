@@ -5,6 +5,27 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUser } from "../../actions/userActions";
 
+const serviceOption = [
+  { label: "1부 찬양/미디어 (7:45AM)", value: "1" },
+  { label: "1부 섬김이 예배 (8:00AM)", value: "2" },
+  { label: "2부 찬양/미디어 (9:30AM)", value: "3" },
+  { label: "2부 (10:10AM)", value: "4" },
+];
+const driverOption = [
+  { label: "Yes", value: "true" },
+  { label: "No", value: "false" },
+];
+const locationOption = [
+  {
+    label: "1,2: Downtown Berkeley Bart Station (2160 Shattuck Ave)",
+    value: "1",
+  },
+  { label: "3,4: Alzheimer's Center (2320 Channing Way)", value: "2" },
+  { label: "5,6: Crossroads (2415 Bowditch St)", value: "3" },
+  { label: "7: Clark Kerr (2601 Warring St)", value: "4" },
+  { label: "8: Foothill (2700 Hearst Ave)", value: "5" },
+  { label: "Other", value: "6" },
+];
 class Profile extends Component {
   constructor() {
     super();
@@ -29,9 +50,9 @@ class Profile extends Component {
         serviceTime: userInfo.serviceTime,
         driver: userInfo.driver,
         surveyCompleted: userInfo.didSurvey,
-      })
+      });
     }
-  }
+  };
   onChange = (e) => {};
   onSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +60,77 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Hello {this.state.name}</h1>
+        <div style={{ marginTop: "4rem" }} className="row">
+          <div className="col s8 offset-s2">
+            <Link to="/dashboard" className="btn-flat waves-effect">
+              <i className="material-icons left">keyboard_backspace</i> Back to
+              home
+            </Link>
+            <div id="edit-profile-form" class="dialog-box">
+              <h4>Edit Profile</h4>
+              <p>
+                <label for="username">Full Name:</label>
+                <input
+                  type="text"
+                  id="username"
+                  value={this.state.name}
+                ></input>
+              </p>
+              <p>
+                <label for="fullName">Email:</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  value={this.state.email}
+                ></input>
+              </p>
+              <p>
+                <label for="location">Location:</label>
+                <input
+                  type="text"
+                  id="location"
+                  value={this.state.location}
+                ></input>
+              </p>
+              <p>
+                <label for="serviceTime">Service Time:</label>
+                <input
+                  type="text"
+                  id="serviceTime"
+                  value={this.state.serviceTime}
+                ></input>
+              </p>
+              <p>
+                <label for="driver">Driver:</label>
+                <input
+                  type="text"
+                  id="driver"
+                  value={this.state.driver}
+                ></input>
+              </p>
+              <p>
+                <label for="surveyCompleted">Survey Completed:</label>
+                <input
+                  type="text"
+                  id="surveyCompleted"
+                  value={this.state.surveyCompleted}
+                ></input>
+              </p>
+              <button
+                style={{
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem",
+                }}
+                type="submit"
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

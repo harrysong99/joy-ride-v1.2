@@ -36,8 +36,10 @@ class Survey extends Component {
     this.validateInput();
     if (this.state.date > 5) {
       this.setState({
-        errors: { didSurvey: "Too late! please ask the admin for a rearrangement"}
-      })
+        errors: {
+          didSurvey: "Too late! please ask the admin for a rearrangement",
+        },
+      });
     } else {
       const userDidSurvey = this.state.didSurvey;
       const { user } = this.props.auth;

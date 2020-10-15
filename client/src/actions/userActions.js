@@ -13,4 +13,4 @@ export const getUser = (userID) => {
 // reset didSurvey
 export const everyDidSurvey = () => {
   return axios.put("/api/users/everyDidSurvey");
-}
+};
