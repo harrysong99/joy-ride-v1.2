@@ -35,8 +35,8 @@ class Dashboard extends Component {
               </Link>
             </div>
             <div className="col s6">
-              <button
-                to="/"
+              <Link
+                to="/dashboard/profile"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
@@ -45,7 +45,7 @@ class Dashboard extends Component {
                 className="btn btn-large btn-flat waves-effect hoverable white black-text"
               >
                 Profile
-              </button>
+              </Link>
             </div>
             <button
               style={{
