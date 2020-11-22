@@ -45,6 +45,25 @@ module.exports = {
     });
     return createRes;
   },
+
+  updateUser: async (userData) => {
+    const user = await User.findOneAndUpdate(
+      { _id: userData._id },
+      {
+        name: userData.name,
+        email: userData.email,
+        location: userData.location,
+        driver: userData.driver,
+        serviceTime: userData.serviceTime,
+      },
+      { useFindAndModify: false, returnOriginal: false }
+    );
+    if (user) {
+      return { success: true, userData: user };
+    } else {
+      return { success: false, errmsg: "update not valid!" };
+    }
+  },
   updateUserLocation: async (userID, userLocation) => {
     // find user and update location
     const user = await User.findOneAndUpdate(

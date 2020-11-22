@@ -101,6 +101,16 @@ router.put("/didSurvey/:id/:didSurvey", async (req, res) => {
   return res.json(createRes);
 });
 
+// @route Put api/users/update
+// @desc update user data
+// @access Public
+router.put("/update", async (req, res) => {
+  const userData = req.body;
+  console.log("request body: " + userData);
+  const createRes = await userController.updateUser(userData);
+  return res.json(createRes);
+});
+
 // @route Put api/users/everyDidSurvey
 // @desc update user data
 // @access Public
