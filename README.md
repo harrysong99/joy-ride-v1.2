@@ -158,6 +158,32 @@ Response Example
 }
 ```
 
+| API             | updateUser                                 |
+| --------------- | ------------------------------------------ |
+| Url             | `/api/users/update`                        |
+| Method          | Put                                        |
+| Body            | name, email, location, serviceTime, driver |
+| Request Example | curl IP/api/users/update                   |
+
+Response Example
+
+```
+{
+    "success": true,
+    "userData": {
+        "_id": "5f751f04dbcd9d5417cf20df",
+        "name": "John Doe",
+        "email": "john@google.com",
+        "password": "password",
+        "serviceTime": 3,
+        "driver": false,
+        "location": 1,
+        "didSurvey": false,
+        "__v": 0
+    }
+}
+```
+
 | API             | updateUserLocation                     |
 | --------------- | -------------------------------------- |
 | Url             | `/api/users/location/:id/:location`    |
