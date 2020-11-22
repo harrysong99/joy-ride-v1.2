@@ -21,6 +21,7 @@ const locationOption = [
   { label: "8: Foothill (2700 Hearst Ave)", value: "5" },
   { label: "Other", value: "6" },
 ];
+
 class Profile extends Component {
   constructor() {
     super();
@@ -62,78 +63,16 @@ class Profile extends Component {
     e.preventDefault();
   };
   render() {
+    const { errors } = this.state;
+    console.log(this.state);
     return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
-            <Link to="/dashboard" className="btn-flat waves-effect">
+            <Link to="/dashboard/profile" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
-              home
+              profile
             </Link>
-            <div id="edit-profile-form" class="dialog-box">
-              <h4>Profile</h4>
-              <p>
-                <label for="username">Full Name:</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={this.state.name}
-                ></input>
-              </p>
-              <p>
-                <label for="fullName">Email:</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  value={this.state.email}
-                ></input>
-              </p>
-              <p>
-                <label for="location">Location:</label>
-                <input
-                  type="text"
-                  id="location"
-                  value={this.state.location}
-                ></input>
-              </p>
-              <p>
-                <label for="serviceTime">Service Time:</label>
-                <input
-                  type="text"
-                  id="serviceTime"
-                  value={this.state.serviceTime}
-                ></input>
-              </p>
-              <p>
-                <label for="driver">Driver:</label>
-                <input
-                  type="text"
-                  id="driver"
-                  value={this.state.driver}
-                ></input>
-              </p>
-              <p>
-                <label for="surveyCompleted">Survey Completed:</label>
-                <input
-                  type="text"
-                  id="surveyCompleted"
-                  value={this.state.surveyCompleted}
-                ></input>
-              </p>
-              <Link
-                to="/dashboard/profile/edit"
-                style={{
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  marginTop: "1rem",
-                }}
-                type="submit"
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Edit Info
-              </Link>
-            </div>
           </div>
         </div>
       </div>

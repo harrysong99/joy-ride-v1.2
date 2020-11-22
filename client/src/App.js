@@ -14,6 +14,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Survey from "./components/dashboard/Survey";
 import Thanks from "./components/dashboard/Thanks";
 import Profile from "./components/dashboard/Profile";
+import Edit from "./components/dashboard/Edit";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -55,6 +56,11 @@ class App extends Component {
                 exact
                 path="/dashboard/profile"
                 component={Profile}
+              />
+              <PrivateRoute
+                exact
+                path="/dashboard/profile/edit"
+                component={Edit}
               />
             </Switch>
             <Copyright />
