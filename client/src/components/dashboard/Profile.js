@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUser } from "../../actions/userActions";
 
-const serviceOption = [
+const services = [
   { label: "1부 찬양/미디어 (7:45AM)", value: "1" },
   { label: "1부 섬김이 예배 (8:00AM)", value: "2" },
   { label: "2부 찬양/미디어 (9:30AM)", value: "3" },
   { label: "2부 (10:10AM)", value: "4" },
 ];
-const locationOption = [
+const locations = [
   {
     label: "1,2: Downtown Berkeley Bart Station (2160 Shattuck Ave)",
     value: "1",
@@ -51,8 +51,8 @@ class Profile extends Component {
       this.setState({
         name: userInfo.name,
         email: userInfo.email,
-        location: locationOption[userInfo.location].label,
-        serviceTime: serviceOption[userInfo.serviceTime].label,
+        location: locations[userInfo.location].label,
+        serviceTime: services[userInfo.serviceTime].label,
         driver: driver,
         surveyCompleted: surveyCompleted,
       });
@@ -70,68 +70,70 @@ class Profile extends Component {
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
             </Link>
-            <div id="edit-profile-form" class="dialog-box">
-              <h4>Profile</h4>
-              <p>
-                <label for="username">Full Name:</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={this.state.name}
-                ></input>
-              </p>
-              <p>
-                <label for="fullName">Email:</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  value={this.state.email}
-                ></input>
-              </p>
-              <p>
-                <label for="location">Location:</label>
-                <input
-                  type="text"
-                  id="location"
-                  value={this.state.location}
-                ></input>
-              </p>
-              <p>
-                <label for="serviceTime">Service Time:</label>
-                <input
-                  type="text"
-                  id="serviceTime"
-                  value={this.state.serviceTime}
-                ></input>
-              </p>
-              <p>
-                <label for="driver">Driver:</label>
-                <input
-                  type="text"
-                  id="driver"
-                  value={this.state.driver}
-                ></input>
-              </p>
-              <p>
-                <label for="surveyCompleted">Survey Completed:</label>
-                <input
-                  type="text"
-                  id="surveyCompleted"
-                  value={this.state.surveyCompleted}
-                ></input>
-              </p>
-              <button
-                style={{
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  marginTop: "1rem",
-                }}
-                type="submit"
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Save
-              </button>
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+              <h4>
+                {this.state.name.split(" ")[0]}
+                {", "} here's what you've told us
+              </h4>
+              <div id="edit-profile-form" class="dialog-box">
+                <p>
+                  <label for="name">Full Name:</label>
+                  <input type="text" id="name" value={this.state.name}></input>
+                </p>
+                <p>
+                  <label for="email">Email:</label>
+                  <input
+                    type="text"
+                    id="email"
+                    value={this.state.email}
+                  ></input>
+                </p>
+                <p>
+                  <label for="location">Location:</label>
+                  <input
+                    type="text"
+                    id="location"
+                    value={this.state.location}
+                  ></input>
+                </p>
+                <p>
+                  <label for="serviceTime">Service Time:</label>
+                  <input
+                    type="text"
+                    id="serviceTime"
+                    value={this.state.serviceTime}
+                  ></input>
+                </p>
+                <p>
+                  <label for="driver">Driver:</label>
+                  <input
+                    type="text"
+                    id="driver"
+                    value={this.state.driver}
+                  ></input>
+                </p>
+                <p>
+                  <label for="surveyCompleted">Survey Completed:</label>
+                  <input
+                    type="text"
+                    id="surveyCompleted"
+                    value={this.state.surveyCompleted}
+                  ></input>
+                </p>
+                <Link
+                  to="/dashboard/profile/edit"
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                  }}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Edit Info
+                </Link>
+              </div>
             </div>
           </div>
         </div>
