@@ -14,3 +14,9 @@ export const getUser = (userID) => {
 export const everyDidSurvey = () => {
   return axios.put("/api/users/everyDidSurvey");
 };
+// update user info
+export const updateUser = (userData, history) => {
+  return axios
+    .put("/api/users/update", userData)
+    .then((res) => history.push("/dashboard/profile"));
+};

@@ -51,8 +51,8 @@ class Profile extends Component {
       this.setState({
         name: userInfo.name,
         email: userInfo.email,
-        location: locations[userInfo.location].label,
-        serviceTime: services[userInfo.serviceTime].label,
+        location: locations[userInfo.location - 1].label,
+        serviceTime: services[userInfo.serviceTime - 1].label,
         driver: driver,
         surveyCompleted: surveyCompleted,
       });
