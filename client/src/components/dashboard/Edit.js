@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUser } from "../../actions/userActions";
+import { updateUser } from "../../actions/userActions";
 
 import Select from "react-select";
 
@@ -32,12 +33,12 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
+      _id: "",
       name: "",
       email: "",
       location: "",
       serviceTime: "",
       driver: "",
-      surveyCompleted: "",
     };
   }
   componentDidMount = async () => {
@@ -45,28 +46,31 @@ class Profile extends Component {
     const { data } = await getUser(user.id);
     if (data.success) {
       const userInfo = data.userData;
-
-      let driver = "No";
-      let surveyCompleted = "No";
+      let driver = 1;
       if (userInfo.driver === true) {
-        driver = "Yes";
+        driver = 0;
       }
-      if (userInfo.didSurvey === true) {
-        surveyCompleted = "Yes";
-      }
-
       this.setState({
+        _id: user.id,
         name: userInfo.name,
         email: userInfo.email,
-        location: locations[userInfo.location].label,
-        serviceTime: services[userInfo.serviceTime].label,
-        driver: driver,
-        surveyCompleted: surveyCompleted,
+        location: locations[userInfo.location - 1].value,
+        serviceTime: services[userInfo.serviceTime - 1].value,
+        driver: driverOption[driver].value,
       });
     }
   };
   onSubmit = (e) => {
     e.preventDefault();
+    const userData = {
+      _id: this.state._id,
+      name: this.state.name,
+      email: this.state.email,
+      location: this.state.location,
+      serviceTime: this.state.serviceTime,
+      driver: this.state.driver,
+    };
+    updateUser(userData, this.props.history);
   };
   onChange = (e) => {
     if (locations.includes(e)) {
@@ -128,7 +132,7 @@ class Profile extends Component {
                       id="location"
                       options={locations}
                       value={locations.find(
-                        (obj) => obj.value === this.state.serviceTime
+                        (obj) => obj.value === this.state.location
                       )}
                       placeholder={this.state.location}
                       searchable={false}
@@ -141,7 +145,7 @@ class Profile extends Component {
                     </p>
                     <Select
                       required={true}
-                      onChange={this.handleSerivce}
+                      onChange={this.onChange}
                       id="serviceTime"
                       options={services}
                       value={services.find(
@@ -158,18 +162,18 @@ class Profile extends Component {
                     </p>
                     <Select
                       required={true}
-                      onChange={this.handleSerivce}
+                      onChange={this.onChange}
                       id="driver"
                       options={driverOption}
                       value={driverOption.find(
-                        (obj) => obj.value === this.state.serviceTime
+                        (obj) => obj.value === this.state.driver
                       )}
                       placeholder={this.state.driver}
                       searchable={false}
                       menuPlacement="top"
                     />
                   </p>
-                  <Link
+                  <button
                     style={{
                       width: "150px",
                       borderRadius: "3px",
@@ -180,7 +184,7 @@ class Profile extends Component {
                     className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                   >
                     Save Changes
-                  </Link>
+                  </button>
                 </div>
               </form>
             </div>
