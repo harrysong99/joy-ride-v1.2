@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Joy Ride Extension Popup",
-  "description": "This extension is a working progress of Joy Ride Chrome extension",
+  "name": "Joy Ride",
+  "description": "Joy Ride Chrome Extension",
   "version": "1.2",
   "browser_action": {
-    "default_title": "Joy Ride Extension",
+    "default_title": "Joy Ride",
     "default_logo": "logo.png"
   },
   "icons": {
