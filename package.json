@@ -28,6 +28,7 @@
     "passport-jwt": "^4.0.0",
     "react-drag-drawer": "^3.3.4",
     "react-redux": "^7.2.1",
+    "react-select": "^3.1.1",
     "validator": "^13.1.1"
   },
   "devDependencies": {
