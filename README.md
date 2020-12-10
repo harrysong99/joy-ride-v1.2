@@ -1,5 +1,7 @@
 # Joy Ride v1.2
 
+https://joyride21.herokuapp.com/
+
 A ride sharing platform for college students to make carpooling easy and convenient
 
 ## How to Run Locally
